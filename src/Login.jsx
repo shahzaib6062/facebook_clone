@@ -2,11 +2,14 @@ import React from "react";
 import "./Login.css";
 import Button from "@mui/material/Button";
 import { auth, provider } from "./firebase";
+
+import { signInWithPopup } from "firebase/auth";
+
 function Login() {
+  console.log(auth);
+
   const signIn = () => {
-    //signIn
-    auth
-      .signInWithPopup(provider)
+    signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
       })
@@ -14,6 +17,7 @@ function Login() {
         alert(error.messegae);
       });
   };
+
   return (
     <div className="login">
       <div className="login_logo">
